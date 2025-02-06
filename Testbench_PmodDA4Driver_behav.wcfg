@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Testbench_PmodDA4Driver_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Testbench_PmodDA4Driver" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="401.000001 us"></ZoomEndTime>
+      <Cursor1Time time="401.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="188"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="25" />
+   <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/sys_clock">
+      <obj_property name="ElementShortName">sys_clock</obj_property>
+      <obj_property name="ObjectShortName">sys_clock</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/spi_clock">
+      <obj_property name="ElementShortName">spi_clock</obj_property>
+      <obj_property name="ObjectShortName">spi_clock</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/CLOCK_DIV">
+      <obj_property name="ElementShortName">CLOCK_DIV</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_DIV</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/CLOCK_DIV_X2">
+      <obj_property name="ElementShortName">CLOCK_DIV_X2</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_DIV_X2</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/i_sys_clock">
+      <obj_property name="ElementShortName">i_sys_clock</obj_property>
+      <obj_property name="ObjectShortName">i_sys_clock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/i_enable">
+      <obj_property name="ElementShortName">i_enable</obj_property>
+      <obj_property name="ObjectShortName">i_enable</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/i_command">
+      <obj_property name="ElementShortName">i_command[3:0]</obj_property>
+      <obj_property name="ObjectShortName">i_command[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/i_addr">
+      <obj_property name="ElementShortName">i_addr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">i_addr[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/i_digital_value">
+      <obj_property name="ElementShortName">i_digital_value[11:0]</obj_property>
+      <obj_property name="ObjectShortName">i_digital_value[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/enable_reg">
+      <obj_property name="ElementShortName">enable_reg</obj_property>
+      <obj_property name="ObjectShortName">enable_reg</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/state">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/spi_clock_divider">
+      <obj_property name="ElementShortName">spi_clock_divider</obj_property>
+      <obj_property name="ObjectShortName">spi_clock_divider</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/spi_clock_rising">
+      <obj_property name="ElementShortName">spi_clock_rising</obj_property>
+      <obj_property name="ObjectShortName">spi_clock_rising</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/spi_clock_falling">
+      <obj_property name="ElementShortName">spi_clock_falling</obj_property>
+      <obj_property name="ObjectShortName">spi_clock_falling</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/sclk_out">
+      <obj_property name="ElementShortName">sclk_out</obj_property>
+      <obj_property name="ObjectShortName">sclk_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/o_sclk">
+      <obj_property name="ElementShortName">o_sclk</obj_property>
+      <obj_property name="ObjectShortName">o_sclk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/o_ss">
+      <obj_property name="ElementShortName">o_ss</obj_property>
+      <obj_property name="ObjectShortName">o_ss</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/bit_counter">
+      <obj_property name="ElementShortName">bit_counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">bit_counter[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/bit_counter_end">
+      <obj_property name="ElementShortName">bit_counter_end</obj_property>
+      <obj_property name="ObjectShortName">bit_counter_end</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/o_mosi">
+      <obj_property name="ElementShortName">o_mosi</obj_property>
+      <obj_property name="ObjectShortName">o_mosi</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/mosi_reg">
+      <obj_property name="ElementShortName">mosi_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mosi_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/command_reg">
+      <obj_property name="ElementShortName">command_reg[3:0]</obj_property>
+      <obj_property name="ObjectShortName">command_reg[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/addr_reg">
+      <obj_property name="ElementShortName">addr_reg[3:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_reg[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/digital_value_reg">
+      <obj_property name="ElementShortName">digital_value_reg[11:0]</obj_property>
+      <obj_property name="ObjectShortName">digital_value_reg[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/o_ready">
+      <obj_property name="ElementShortName">o_ready</obj_property>
+      <obj_property name="ObjectShortName">o_ready</obj_property>
+   </wvobject>
+</wave_config>
