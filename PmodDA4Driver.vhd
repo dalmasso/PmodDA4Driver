@@ -45,7 +45,8 @@
 --		Input 	-	i_enable: Module Enable ('0': Disable, '1': Enable)
 --		Input 	-	i_command: DAC Command (4 bits)
 --		Input 	-	i_addr: DAC Address Register (4 bits)
---		Input 	-	i_digital_value: DAC Value (12 bits)
+--		Input 	-	i_digital_value: Digital Value to convert (12 bits)
+--		Input 	-	i_config: DAC Configuration Bits (8 bits)
 --		Output 	-	o_ready: Ready to convert Next Digital Value ('0': NOT Ready, '1': Ready)
 --		Output 	-	o_sclk: SPI Serial Clock
 --		Output 	-	o_mosi: SPI Master Output Slave Input Data line
@@ -69,6 +70,7 @@ PORT(
     i_command: IN UNSIGNED(3 downto 0);
     i_addr: IN UNSIGNED(3 downto 0);
 	i_digital_value: IN UNSIGNED(11 downto 0);
+	i_config: IN UNSIGNED(7 downto 0);
     o_ready: OUT STD_LOGIC;
 	o_sclk: OUT STD_LOGIC;
     o_mosi: OUT STD_LOGIC;
@@ -90,13 +92,13 @@ constant CLOCK_DIV: INTEGER := sys_clock / spi_clock;
 constant CLOCK_DIV_X2: INTEGER := CLOCK_DIV /2;
 
 -- SPI SCLK IDLE Bit
-constant SCLK_IDLE_BIT: STD_LOGIC := '1';
+constant SCLK_IDLE_BIT: STD_LOGIC := '0';
 
 -- SPI MOSI IDLE Bit
 constant MOSI_IDLE_BIT: STD_LOGIC := '0';
 
--- SPI Disable Slave Select Line
-constant DISABLE_SS_LINE: STD_LOGIC := '1';
+-- SPI Enable Slave Select Line
+constant ENABLE_SS_LINE: STD_LOGIC := '0';
 
 ------------------------------------------------------------------------
 -- Signal Declarations
@@ -106,9 +108,10 @@ signal enable_reg: STD_LOGIC := '0';
 signal command_reg: UNSIGNED(3 downto 0) := (others => '0');
 signal addr_reg: UNSIGNED(3 downto 0) := (others => '0');
 signal digital_value_reg: UNSIGNED(11 downto 0) := (others => '0');
+signal config_reg: UNSIGNED(7 downto 0) := (others => '0');
 
 -- SPI Master States
-TYPE spiState is (IDLE, LOAD_INPUTS, START_TX, BYTES_TX, WAITING);
+TYPE spiState is (IDLE, BYTES_TX, WAITING);
 signal state: spiState := IDLE;
 signal next_state: spiState;
 
@@ -146,6 +149,7 @@ begin
                 command_reg <= i_command;
                 addr_reg <= i_addr;
                 digital_value_reg <= i_digital_value;
+				config_reg <= i_config;
             end if;
 
         end if;
@@ -214,13 +218,10 @@ begin
 	begin
 		case state is
 			when IDLE =>    if (enable_reg = '1') then
-                                next_state <= START_TX;
+                                next_state <= BYTES_TX;
                             else
                                 next_state <= IDLE;
 							end if;
-
-            -- Start TX
-            when START_TX => next_state <= BYTES_TX;
 
 			-- Bytes TX Cycle
 			when BYTES_TX =>
@@ -284,7 +285,7 @@ begin
 			end if;
 		end if;
 	end process;
-	o_sclk <= SCLK_IDLE_BIT when state = IDLE or state = WAITING else sclk_out;
+	o_sclk <= sclk_out when state = BYTES_TX else SCLK_IDLE_BIT;
 
 	----------------------------
 	-- SPI Write Value (MOSI) --
@@ -295,7 +296,7 @@ begin
 		if rising_edge(i_sys_clock) then
 			
 			-- Load MOSI Register
-			if (state = START_TX) then
+			if (state = IDLE) then
 
                 -- Don't Care Bits
 				mosi_reg(31 downto 28) <= (others => AD5628_DONT_CARE_BIT);
@@ -309,8 +310,8 @@ begin
                 -- Data Bits
                 mosi_reg(19 downto 8) <= digital_value_reg;
 
-                -- Don't Care Bits
-				mosi_reg(7 downto 0) <= (others => AD5628_DONT_CARE_BIT);
+                -- Configuration Bits
+				mosi_reg(7 downto 0) <= config_reg;
 
 			-- Left-Shift MOSI Register 
 			elsif (state = BYTES_TX) and (spi_clock_rising = '1') then
@@ -319,11 +320,11 @@ begin
 
 		end if;
 	end process;
-	o_mosi <= mosi_reg(31) when (state = BYTES_TX) or (state = WAITING) else MOSI_IDLE_BIT;
+	o_mosi <= mosi_reg(31) when state = BYTES_TX else MOSI_IDLE_BIT;
 
     ---------------------------
 	-- SPI Slave Select Line --
 	---------------------------
-    o_ss <= DISABLE_SS_LINE when (state = IDLE) else not(DISABLE_SS_LINE);
+    o_ss <= ENABLE_SS_LINE when state = BYTES_TX else not(ENABLE_SS_LINE);
 
 end Behavioral;

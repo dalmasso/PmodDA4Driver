@@ -12,13 +12,13 @@
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
       <ZoomEndTime time="401.000001 us"></ZoomEndTime>
-      <Cursor1Time time="401.000000 us"></Cursor1Time>
+      <Cursor1Time time="70.468619 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="188"></NameColumnWidth>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="25" />
+   <WVObjectSize size="27" />
    <wvobject type="other" fp_name="/Testbench_PmodDA4Driver/uut/sys_clock">
       <obj_property name="ElementShortName">sys_clock</obj_property>
       <obj_property name="ObjectShortName">sys_clock</obj_property>
@@ -54,6 +54,10 @@
    <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/i_digital_value">
       <obj_property name="ElementShortName">i_digital_value[11:0]</obj_property>
       <obj_property name="ObjectShortName">i_digital_value[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/i_config">
+      <obj_property name="ElementShortName">i_config[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_config[7:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/enable_reg">
       <obj_property name="ElementShortName">enable_reg</obj_property>
@@ -116,6 +120,10 @@
    <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/digital_value_reg">
       <obj_property name="ElementShortName">digital_value_reg[11:0]</obj_property>
       <obj_property name="ObjectShortName">digital_value_reg[11:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/Testbench_PmodDA4Driver/uut/config_reg">
+      <obj_property name="ElementShortName">config_reg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">config_reg[7:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/Testbench_PmodDA4Driver/uut/o_ready">
       <obj_property name="ElementShortName">o_ready</obj_property>

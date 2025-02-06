@@ -45,7 +45,8 @@
 --		Input 	-	i_enable: Module Enable ('0': Disable, '1': Enable)
 --		Input 	-	i_command: DAC Command (4 bits)
 --		Input 	-	i_addr: DAC Address Register (4 bits)
---		Input 	-	i_digital_value: DAC Value (12 bits)
+--		Input 	-	i_digital_value: Digital Value to convert (12 bits)
+--		Input 	-	i_config: DAC Configuration Bits (8 bits)
 --		Output 	-	o_ready: Ready to convert Next Digital Value ('0': NOT Ready, '1': Ready)
 --		Output 	-	o_sclk: SPI Serial Clock
 --		Output 	-	o_mosi: SPI Master Output Slave Input Data line
@@ -75,6 +76,7 @@ PORT(
     i_command: IN UNSIGNED(3 downto 0);
     i_addr: IN UNSIGNED(3 downto 0);
 	i_digital_value: IN UNSIGNED(11 downto 0);
+	i_config: IN UNSIGNED(7 downto 0);
     o_ready: OUT STD_LOGIC;
 	o_sclk: OUT STD_LOGIC;
     o_mosi: OUT STD_LOGIC;
@@ -88,6 +90,7 @@ signal enable: STD_LOGIC := '0';
 signal command: UNSIGNED(3 downto 0):= (others => '0');
 signal addr: UNSIGNED(3 downto 0):= (others => '0');
 signal digital_value: UNSIGNED(11 downto 0):= (others => '0');
+signal config: UNSIGNED(7 downto 0):= (others => '0');
 signal ready: STD_LOGIC := '0';
 signal sclk: STD_LOGIC := '0';
 signal mosi: STD_LOGIC := '0';
@@ -108,24 +111,28 @@ begin
     command <= x"0";
     addr <= x"0";
     digital_value <= x"000";
+    config <= x"00";
     wait for 111 us;
     
     -- Config Internal REF Register
     command <= x"8";
     addr <= x"0";
     digital_value <= x"000";
+    config <= x"01";
     wait until ready = '0';
     
     -- Digital Value 1
     command <= x"F";
     addr <= x"2";
     digital_value <= x"123";
+    config <= x"00";
     wait until ready = '0';
     
     -- Digital Value 2
     command <= x"9";
     addr <= x"8";
     digital_value <= x"765";
+    config <= x"00";
     wait;
 end process;
 
@@ -141,6 +148,7 @@ uut: PmodDA4Driver
         i_command => command,
         i_addr => addr,
         i_digital_value => digital_value,
+        i_config => config,
         o_ready => ready,
         o_sclk => sclk,
         o_mosi => mosi,
