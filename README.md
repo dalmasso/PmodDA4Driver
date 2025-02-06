@@ -2,7 +2,7 @@
 Pmod DA4 Driver for the 8 Channels 12-bit Digital-to-Analog Converter AD5628
 This module implements a Pmod DA4 Driver for the 8 Channels 12-bit Digital-to-Analog Converter AD5628. The communication with the DAC uses the SPI protocol (Write only). User can specifies the SPI Serial Clock Frequency (up to 50 MHz).
 
-<img width="647" alt="pmodda4" src="https://github.com/user-attachments/assets/6ab4b86f-b6bc-4fd4-82e7-b9a7d9cb6efc" />
+<img width="647" alt="pmodda4driver" src="https://github.com/user-attachments/assets/8f7a697b-4759-4185-8b3b-d61b4dbbba0f" />
 
 ## Usage
 
@@ -53,6 +53,7 @@ Address
 | i_command | Input | DAC Command (4 bits) |
 | i_addr | Input | DAC Address Register (4 bits) |
 | i_digital_value | Input | DAC Value (12 bits) |
+| i_config | Input | DAC Configuration Bits (8 bits) |
 | o_ready | Output | Ready to convert Next Digital Value ('0': NOT Ready, '1': Ready) |
 | o_sclk | Output | SPI Serial Clock |
 | o_mosi | Output | SPI Master Output Slave Input Data line |
