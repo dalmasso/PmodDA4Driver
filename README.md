@@ -35,7 +35,7 @@ Address
 | 0 | 1 | 1 | 1 | DAC Channel H |
 | 1 | 1 | 1 | 1 | DAC All Channels |
 
-## Signal Generator Pin Description
+## Pin Description
 
 ### Generics
 
